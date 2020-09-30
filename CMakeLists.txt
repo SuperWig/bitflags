@@ -54,6 +54,8 @@ endif ()
 option (BITFLAGS_BUILD_SAMPLES "Build examples" ON)
 option (BITFLAGS_BUILD_TESTS "Build tests" ON)
 
+include(GNUInstallDirs)
+
 add_library (bitflags INTERFACE)
 add_library (bitflags::bitflags ALIAS bitflags)
 
@@ -90,11 +92,8 @@ endif ()
 
 if (NOT BITFLAGS_SUBPROJECT)
     include(CMakePackageConfigHelpers)
-    include(GNUInstallDirs)
     
     install (TARGETS bitflags EXPORT bitflags-config)
-    get_target_property(BITPROPERTIES bitflags INTERFACE_INCLUDE_DIRECTORIES)
-    message("bitflags has these includes ${BITPROPERTIES}")
 
     write_basic_package_version_file (
         bitflags-config-version.cmake
