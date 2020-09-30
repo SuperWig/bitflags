@@ -93,6 +93,8 @@ if (NOT BITFLAGS_SUBPROJECT)
     include(GNUInstallDirs)
     
     install (TARGETS bitflags EXPORT bitflags-config)
+    get_target_property(BITPROPERTIES bitflags INTERFACE_INCLUDE_DIRECTORIES)
+    message("bitflags has these includes ${BITPROPERTIES}")
 
     write_basic_package_version_file (
         bitflags-config-version.cmake
